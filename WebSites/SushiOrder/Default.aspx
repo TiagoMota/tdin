@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Debug="true" %>
 
 <!DOCTYPE html>
 
@@ -33,7 +33,7 @@
             <br />
             <asp:Button ID="placeOrderButton" runat="server" Text="Place Order" OnClick="PlaceOrder_Click" />
         </asp:Panel>
-        <asp:Panel ID="Panel2" runat="server">    
+        <asp:Panel ID="Panel2" runat="server">   
             <asp:Label ID="orderPriceLabel" runat="server" />
             <br />
             <asp:Button ID="confirmOrderButton" Text="Confirm order" runat="server" OnClick="SubmitOrder" />   
@@ -43,8 +43,9 @@
           <br />
         </asp:Panel>
         <asp:Panel ID="Panel4" runat="server">
-        <asp:GridView ID="GridView1" runat="server">
-          </asp:GridView>
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
+            <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>
           <br /> 
         </asp:Panel> 
     </form>

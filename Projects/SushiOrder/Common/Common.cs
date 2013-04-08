@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
+//Delegates
+public delegate void AddOrderEventHandler();
+
 [Serializable]
 public class Order {
   public string Name { get; set; }
@@ -24,7 +28,26 @@ public class Order {
 }
  
 public interface IOrders {
+  
+  event AddOrderEventHandler AddingOrder;
+
   void Add(string name, string add, int cc, int tp, int qt);
   List<Order> GetCostumerOrders(string name);
   List<Order> GetAllOrders();
 }
+
+public class EventIntermediate : MarshalByRefObject
+{
+    public event AddOrderEventHandler AddingOrder;
+
+
+    public void FireAddingOrder()
+    {
+        AddingOrder();
+    }
+}
+
+
+
+
+

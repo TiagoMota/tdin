@@ -20,6 +20,7 @@ public partial class _Default : System.Web.UI.Page
       }
     string address = ConfigurationManager.AppSettings["RemoteAddress"];
     orderObj = (IOrders) Activator.GetObject(typeof(IOrders), address);
+  
   }
 
   protected void ShowOrderForm(object sender, EventArgs e)
@@ -53,9 +54,9 @@ public partial class _Default : System.Web.UI.Page
 
     List<Order> ls;
 
-    ls = orderObj.GetCostumerOrders("pete");
-    GridView1.DataSource = ls;
-    GridView1.DataBind();
+    ls = orderObj.GetAllOrders();
+    foreach (Order o in ls)
+        BulletedList1.Items.Add(o.Name + " | " + o.address + " | " + o.ccNumber + " | " + o.type + " | " + o.quantity + " | " + o.state);
     Panel4.Visible = true;
   }
 

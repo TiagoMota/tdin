@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 public class Orders : MarshalByRefObject, IOrders {
   private List<Order> AOrders;
+  public event AddOrderEventHandler AddingOrder;
 
   public Orders() {
     AOrders = new List<Order>();
-    //AOrders.Add(new Order("pete", 2));
+    //AOrders.Add(new Order("pete", "address", 11111, 1, 2));
     Console.WriteLine("[Orders] built.");
   }
 
   public void Add(string name, string add, int cc, int tp, int qt)
   {
     AOrders.Add(new Order(name, add, cc, tp, qt));
+    AddingOrder();
     Console.WriteLine("[Add] called.");
   }
 
@@ -33,4 +35,11 @@ public class Orders : MarshalByRefObject, IOrders {
   {
       return AOrders;
   }
+
+  
+
+  
+
 }
+
+

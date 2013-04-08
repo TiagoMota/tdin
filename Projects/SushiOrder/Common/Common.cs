@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 //Delegates
 public delegate void AddOrderEventHandler();
+public delegate void PreparingOrderEventHandler();
+
 
 [Serializable]
 public class Order {
@@ -30,21 +32,38 @@ public class Order {
 public interface IOrders {
   
   event AddOrderEventHandler AddingOrder;
+  event PreparingOrderEventHandler PreparingOrder;
 
   void Add(string name, string add, int cc, int tp, int qt);
   List<Order> GetCostumerOrders(string name);
   List<Order> GetAllOrders();
+  List<Order> GetOrdedOrders();
+  void setOrderPreparing(string t);
+  List<Order> GetPreparingOrders();
 }
 
 public class EventIntermediate : MarshalByRefObject
 {
     public event AddOrderEventHandler AddingOrder;
-
+    public event PreparingOrderEventHandler PreparingOrder;
 
     public void FireAddingOrder()
     {
         AddingOrder();
     }
+
+    public void FirePreparingOrder() 
+    {
+        PreparingOrder();
+    }
+
+
+    public override object InitializeLifetimeService()
+    {
+        Console.WriteLine("[EventIntermediate]: InitilizeLifetimeService");
+        return null;
+    }
+
 }
 
 

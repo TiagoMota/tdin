@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public delegate void AddOrderEventHandler();
 public delegate void PreparingOrderEventHandler();
 public delegate void ReadyOrderEventHandler();
+public delegate void DeliveringOrderEventHandler();
+public delegate void FinalizingOrderEventHandler();
 
 [Serializable]
 public class Client
@@ -33,6 +35,7 @@ public class Order {
    * orded -> preparing -> ready -> delivering -> done
    */
   public string state { get; set; }
+  public string deliveryTeamAssigned { get; set; }
 
   public Order(string name, string add, int cc, int tp, int qt) {
     client = new Client(name, add, cc);
@@ -47,6 +50,8 @@ public interface IOrders {
   event AddOrderEventHandler AddingOrder;
   event PreparingOrderEventHandler PreparingOrder;
   event ReadyOrderEventHandler ReadyOrder;
+  event DeliveringOrderEventHandler DeliveringOrder;
+  event FinalizingOrderEventHandler FinalizingOrder;
 
   void Add(string name, string add, int cc, int tp, int qt);
   List<Order> GetCostumerOrders(string name);
@@ -54,8 +59,14 @@ public interface IOrders {
   List<Order> GetOrdedOrders();
   List<Order> GetPreparingOrders();
   List<Order> GetReadyOrders();
+  List<Order> GetDeliveringOrders();
   void setOrderPreparing(string t);
   void setOrderReady(string t);
+  void setOrderDelivering(string t, string team);
+  void setOrderDone(string t);
+
+  List<String> GetDeliveryTeams();
+  void AddDeliveryTeam(string i);
 
 }
 
@@ -64,6 +75,8 @@ public class EventIntermediate : MarshalByRefObject
     public event AddOrderEventHandler AddingOrder;
     public event PreparingOrderEventHandler PreparingOrder;
     public event ReadyOrderEventHandler ReadyOrder;
+    public event DeliveringOrderEventHandler DeliveringOrder;
+    public event FinalizingOrderEventHandler FinalizingOrder;
 
     public void FireAddingOrder()
     {
@@ -78,6 +91,16 @@ public class EventIntermediate : MarshalByRefObject
     public void FireReadyOrder()
     {
         ReadyOrder();
+    }
+
+    public void FireDeliveringOrder()
+    {
+        DeliveringOrder();
+    }
+
+    public void FireFinalizingOrder()
+    {
+        FinalizingOrder();
     }
 
 

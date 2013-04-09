@@ -1,0 +1,14 @@
+TODO:
+	Server:
+	- Refresh das gridviews quando se faz load do ficheiro de save
+	
+	WebClient:
+	- Melhorar
+	- Cenas que pede no enunciado
+
+	PrepRoom:
+	- Aceitar encomendas com mais de uma order
+
+	DeliveryRoom:
+	- Ultimo evento, passar order a Done.
+

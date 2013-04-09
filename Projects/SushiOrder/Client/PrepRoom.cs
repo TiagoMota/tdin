@@ -110,7 +110,7 @@ class PrepRoom : Form {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 13);
             this.label1.TabIndex = 1;
@@ -129,10 +129,10 @@ class PrepRoom : Form {
             this.Type,
             this.Quantity,
             this.State});
-            this.dataGridView1.Location = new System.Drawing.Point(17, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(374, 214);
+            this.dataGridView1.Size = new System.Drawing.Size(378, 483);
             this.dataGridView1.TabIndex = 2;
             // 
             // id_orded
@@ -172,9 +172,9 @@ class PrepRoom : Form {
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(327, 260);
+            this.button1.Location = new System.Drawing.Point(308, 547);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 32);
+            this.button1.Size = new System.Drawing.Size(91, 41);
             this.button1.TabIndex = 3;
             this.button1.Text = "Prepare";
             this.button1.UseVisualStyleBackColor = true;
@@ -193,10 +193,10 @@ class PrepRoom : Form {
             this.type_prep,
             this.qt_prep,
             this.state_prep});
-            this.dataGridView2.Location = new System.Drawing.Point(438, 44);
+            this.dataGridView2.Location = new System.Drawing.Point(415, 50);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(366, 214);
+            this.dataGridView2.Size = new System.Drawing.Size(373, 483);
             this.dataGridView2.TabIndex = 4;
             // 
             // id_prep
@@ -236,9 +236,9 @@ class PrepRoom : Form {
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(739, 264);
+            this.button2.Location = new System.Drawing.Point(698, 547);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 28);
+            this.button2.Size = new System.Drawing.Size(90, 35);
             this.button2.TabIndex = 5;
             this.button2.Text = "Ready";
             this.button2.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@ class PrepRoom : Form {
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(448, 17);
+            this.label2.Location = new System.Drawing.Point(412, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 6;
@@ -255,7 +255,7 @@ class PrepRoom : Form {
             // 
             // PrepRoom
             // 
-            this.ClientSize = new System.Drawing.Size(825, 311);
+            this.ClientSize = new System.Drawing.Size(805, 609);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView2);
@@ -295,12 +295,6 @@ class PrepRoom : Form {
       string tmp = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString();
       ordersList.setOrderReady(tmp);
   }
-
-  /*private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-  {
-      string tmp = dataGridView1.Rows[e.RowIndex].Cells[0].ToString();
-      ordersList.setOrderPreparing(ordersList.GetAllOrders().Find(x => x.Name == tmp));
-  }*/
 
 }
 

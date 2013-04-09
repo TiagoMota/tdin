@@ -80,7 +80,6 @@ public class Orders : MarshalByRefObject, IOrders {
   {
       AOrders.Find(x => x.id == Convert.ToInt32(t)).state = "ready";
       ReadyOrder();
-      //TODO meter a gravar para ficheiro as encomendas pagas, com o ID, timestamp, nome e cc.
   }
 
 }

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+
 
 public class Orders : MarshalByRefObject, IOrders {
   private List<Order> AOrders;
@@ -14,13 +18,53 @@ public class Orders : MarshalByRefObject, IOrders {
   public event FinalizingOrderEventHandler FinalizingOrder;
 
   public Orders() {
-    AOrders = new List<Order>();
-    DeliveryTeams = new List<String>();
 
-    //AOrders.Add(new Order("pete", "address", 11111, 1, 2));
+    if (!File.Exists("save.bin"))
+    {
+        Console.WriteLine("Save file dont exist.");
+        AOrders = new List<Order>();
+        
+    }
+    else
+    {
+        AOrders = load("save.bin");
+        Console.WriteLine("Save file exist.");
+    }
+
+    DeliveryTeams = new List<String>();
     Console.WriteLine("[Orders] built.");
   }
 
+  ~Orders()
+  {
+      save("save.bin");
+  }
+
+  public void save(string filename)
+  {
+      IFormatter formatter = new BinaryFormatter();
+      Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
+      formatter.Serialize(stream, AOrders);
+      stream.Close();
+  }
+  public List<Order> load(string filename)
+  {
+      List<Order> AOrders;
+      Stream stream = File.Open(filename, FileMode.Open);
+      BinaryFormatter bFormatter = new BinaryFormatter();
+      AOrders = (List<Order>)bFormatter.Deserialize(stream);
+      stream.Close();
+      return AOrders;
+  }
+  public void addPayOrder(Order o)
+  {
+      using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Tiago\Documents\GitHub\tdin\Encomendas.txt", true))
+      {
+          //(seu identificador numérico), data e hora, nome do cliente e número do cartão de crédito.
+          file.WriteLine(o.id.ToString() + " " + o.client.timestamp.ToString() + " " + o.client.name +  " " + o.client.ccNumber.ToString());
+      }
+  }  
+    
   public override object InitializeLifetimeService()
   {
       Console.WriteLine("[Orders]: InitilizeLifetimeService");
@@ -92,10 +136,11 @@ public class Orders : MarshalByRefObject, IOrders {
 
   public void setOrderPreparing(string t)
   {
+
       AOrders.Find(x => x.id == Convert.ToInt32(t)).state = "preparing";
       PreparingOrder();
       AOrders.Find(x => x.id == Convert.ToInt32(t)).client.timestamp = DateTime.Now;
-      //TODO meter a gravar para ficheiro as encomendas pagas, com o ID, timestamp, nome e cc.
+      addPayOrder(AOrders.Find(x => x.id == Convert.ToInt32(t)));
   }
 
   public void setOrderReady(string t)

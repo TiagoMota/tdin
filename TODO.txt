@@ -6,9 +6,14 @@ TODO:
 	- Melhorar
 	- Cenas que pede no enunciado
 
+	-quando ves o preço, não é o server que o calcula
+
 	PrepRoom:
 	- Aceitar encomendas com mais de uma order
 
 	DeliveryRoom:
 	- Ultimo evento, passar order a Done.
 
+
+
+///ver add no orders.cs

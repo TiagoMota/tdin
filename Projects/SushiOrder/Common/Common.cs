@@ -53,7 +53,7 @@ public interface IOrders {
   event DeliveringOrderEventHandler DeliveringOrder;
   event FinalizingOrderEventHandler FinalizingOrder;
 
-  void Add(string name, string add, int cc, int tp, int qt);
+  void Add(string name, string add, int cc, Dictionary<int, string> orders);
   List<Order> GetCostumerOrders(string name);
   List<Order> GetAllOrders();
   List<Order> GetOrdedOrders();
@@ -67,7 +67,6 @@ public interface IOrders {
 
   List<String> GetDeliveryTeams();
   void AddDeliveryTeam(string i);
-
 }
 
 public class EventIntermediate : MarshalByRefObject

@@ -31,21 +31,9 @@ public partial class _Default : System.Web.UI.Page
 
   protected void PlaceOrder_Click(object sender, EventArgs e)
   {
-      if (orderType.Text == "1")
-      {
-          orderPriceLabel.Text = "Order Price: " + Convert.ToInt32(orderQuantity.Text) * 20;
-          orderPriceLabel.Visible = true;
-      }
-      else if (orderType.Text == "2")
-      {
-          orderPriceLabel.Text = "Order Price: " + Convert.ToInt32(orderQuantity.Text) * 30;
-          orderPriceLabel.Visible = true;
-      }
-      else
-      {
-          orderPriceLabel.Text = "Order Price: " + Convert.ToInt32(orderQuantity.Text) * 35;
-          orderPriceLabel.Visible = true;
-      }
+      int price = 5;//(Convert.ToInt32(ammount1.Text) * 20 + Convert.ToInt32(ammount2.Text) * 30 + Convert.ToInt32(ammount3.Text) * 35);
+      orderPriceLabel.Text = "Order Price: " + price;
+      orderPriceLabel.Visible = true;
 
       Panel2.Visible = true;
   }
@@ -65,6 +53,10 @@ public partial class _Default : System.Web.UI.Page
   {
       //TODO adicionar nova order ao objecto remoto
       Panel1.Visible = false;
-      orderObj.Add(costumerName.Text, costumerAddress.Text, Convert.ToInt32(costumerCC.Text), Convert.ToInt32(orderType.Text), Convert.ToInt32(orderQuantity.Text));
+      Dictionary<int, string> orders = new Dictionary<int, string>();
+      //orders.Add(1, ammount1.Text);
+      //orders.Add(2, ammount2.Text);
+      orders.Add(2, "2");
+      orderObj.Add(costumerName.Text, costumerAddress.Text, Convert.ToInt32(costumerCC.Text),orders);
   }
 }

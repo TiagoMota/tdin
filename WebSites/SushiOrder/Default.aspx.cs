@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    //TODO meter a dar para fazer encomendas de vários tipos de sushi de uma vez
   IOrders orderObj;
 
   protected void Page_Load(object sender, EventArgs e) {
@@ -56,7 +57,7 @@ public partial class _Default : System.Web.UI.Page
 
     ls = orderObj.GetAllOrders();
     foreach (Order o in ls)
-        BulletedList1.Items.Add(o.Name + " | " + o.address + " | " + o.ccNumber + " | " + o.type + " | " + o.quantity + " | " + o.state);
+        BulletedList1.Items.Add(o.id + " | " + o.client.name + " | " + o.client.address + " | " + o.client.ccNumber + " | " + o.type + " | " + o.quantity + " | " + o.state);
     Panel4.Visible = true;
   }
 

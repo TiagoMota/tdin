@@ -46,8 +46,8 @@ class PrepRoom : Form {
             ordersList.AddingOrder += inter.FireAddingOrder;
             ordersList.PreparingOrder += inter.FirePreparingOrder;
             ordersList.ReadyOrder += inter.FireReadyOrder;
-
             InitializeComponent();
+            checkIfExistsSavedOrders();
 
         }
         catch (Exception ex)
@@ -56,6 +56,12 @@ class PrepRoom : Form {
             Close();
         }
       }
+
+    private void checkIfExistsSavedOrders()
+    {
+        refreshOrdersList(dataGridView1, ordersList.GetOrdedOrders());
+        refreshOrdersList(dataGridView2, ordersList.GetPreparingOrders());
+    }
 
     public override object InitializeLifetimeService()
     {
@@ -122,6 +128,8 @@ class PrepRoom : Form {
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_orded,
@@ -255,13 +263,17 @@ class PrepRoom : Form {
             // 
             // PrepRoom
             // 
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(805, 609);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.ShowIcon = false;
+            this.Text = "Preparing Room";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

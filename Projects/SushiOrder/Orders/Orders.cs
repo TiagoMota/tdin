@@ -17,6 +17,7 @@ public class Orders : MarshalByRefObject, IOrders
     public event ReadyOrderEventHandler ReadyOrder;
     public event DeliveringOrderEventHandler DeliveringOrder;
     public event FinalizingOrderEventHandler FinalizingOrder;
+    string path = System.IO.Path.GetFullPath("Encomendas.txt");
 
     public Orders()
     {
@@ -60,7 +61,9 @@ public class Orders : MarshalByRefObject, IOrders
     }
     public void addPayOrder(Order o)
     {
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Tiago\Documents\GitHub\tdin\Encomendas.txt", true))
+
+        
+        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@path, true))
         {
             //(seu identificador numérico), data e hora, nome do cliente e número do cartão de crédito.
             file.WriteLine(o.id.ToString() + " " + o.client.timestamp.ToString() + " " + o.client.name + " " + o.client.ccNumber.ToString());

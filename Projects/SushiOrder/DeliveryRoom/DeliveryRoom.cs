@@ -31,6 +31,7 @@ public class DeliveryRoom : Form
     private DataGridViewTextBoxColumn state_Delivering;
     IOrders ordersList;
 
+
     DeliveryRoom()
     {
         Text = "Delivery Room";
@@ -48,6 +49,7 @@ public class DeliveryRoom : Form
             TeamID = (ordersList.GetDeliveryTeams().Count + 1).ToString();
             ordersList.AddDeliveryTeam(TeamID);
             InitializeComponent();
+            checkIfExistsSavedOrders();
 
         }
         catch (Exception ex)
@@ -55,6 +57,12 @@ public class DeliveryRoom : Form
             MessageBox.Show(ex.Message);
             Close();
         }
+    }
+
+    private void checkIfExistsSavedOrders()
+    {
+        refreshList(dataGridView1, ordersList.GetReadyOrders());
+        refreshList_Special(dataGridView2, ordersList.GetDeliveringOrders(), TeamID);
     }
 
     public void OnReadyOrder()
@@ -93,19 +101,19 @@ public class DeliveryRoom : Form
     {
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.escolher = new System.Windows.Forms.Button();
-            this.entregue = new System.Windows.Forms.Button();
-            this.nameTeam = new System.Windows.Forms.Label();
             this.id_Ready = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state_Ready = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.id_Delivering = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameChoose = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressChoose = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state_Delivering = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.escolher = new System.Windows.Forms.Button();
+            this.entregue = new System.Windows.Forms.Button();
+            this.nameTeam = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -135,6 +143,30 @@ public class DeliveryRoom : Form
             this.dataGridView1.Size = new System.Drawing.Size(452, 428);
             this.dataGridView1.TabIndex = 1;
             // 
+            // id_Ready
+            // 
+            this.id_Ready.HeaderText = "ID";
+            this.id_Ready.Name = "id_Ready";
+            this.id_Ready.ReadOnly = true;
+            // 
+            // nameDelivery
+            // 
+            this.nameDelivery.HeaderText = "Name";
+            this.nameDelivery.Name = "nameDelivery";
+            this.nameDelivery.ReadOnly = true;
+            // 
+            // addressDelivery
+            // 
+            this.addressDelivery.HeaderText = "Address";
+            this.addressDelivery.Name = "addressDelivery";
+            this.addressDelivery.ReadOnly = true;
+            // 
+            // state_Ready
+            // 
+            this.state_Ready.HeaderText = "State";
+            this.state_Ready.Name = "state_Ready";
+            this.state_Ready.ReadOnly = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -159,6 +191,30 @@ public class DeliveryRoom : Form
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(452, 428);
             this.dataGridView2.TabIndex = 3;
+            // 
+            // id_Delivering
+            // 
+            this.id_Delivering.HeaderText = "ID";
+            this.id_Delivering.Name = "id_Delivering";
+            this.id_Delivering.ReadOnly = true;
+            // 
+            // nameChoose
+            // 
+            this.nameChoose.HeaderText = "Name";
+            this.nameChoose.Name = "nameChoose";
+            this.nameChoose.ReadOnly = true;
+            // 
+            // addressChoose
+            // 
+            this.addressChoose.HeaderText = "Address";
+            this.addressChoose.Name = "addressChoose";
+            this.addressChoose.ReadOnly = true;
+            // 
+            // state_Delivering
+            // 
+            this.state_Delivering.HeaderText = "State";
+            this.state_Delivering.Name = "state_Delivering";
+            this.state_Delivering.ReadOnly = true;
             // 
             // escolher
             // 
@@ -185,57 +241,9 @@ public class DeliveryRoom : Form
             this.nameTeam.AutoSize = true;
             this.nameTeam.Location = new System.Drawing.Point(20, 9);
             this.nameTeam.Name = "nameTeam";
-            this.nameTeam.Size = new System.Drawing.Size(65, 13);
+            this.nameTeam.Size = new System.Drawing.Size(84, 13);
             this.nameTeam.TabIndex = 6;
             this.nameTeam.Text = "Team number: " + TeamID;
-            // 
-            // id_Ready
-            // 
-            this.id_Ready.HeaderText = "ID";
-            this.id_Ready.Name = "id_Ready";
-            this.id_Ready.ReadOnly = true;
-            // 
-            // nameDelivery
-            // 
-            this.nameDelivery.HeaderText = "Name";
-            this.nameDelivery.Name = "nameDelivery";
-            this.nameDelivery.ReadOnly = true;
-            // 
-            // addressDelivery
-            // 
-            this.addressDelivery.HeaderText = "Address";
-            this.addressDelivery.Name = "addressDelivery";
-            this.addressDelivery.ReadOnly = true;
-            // 
-            // state_Ready
-            // 
-            this.state_Ready.HeaderText = "State";
-            this.state_Ready.Name = "state_Ready";
-            this.state_Ready.ReadOnly = true;
-            // 
-            // id_Delivering
-            // 
-            this.id_Delivering.HeaderText = "ID";
-            this.id_Delivering.Name = "id_Delivering";
-            this.id_Delivering.ReadOnly = true;
-            // 
-            // nameChoose
-            // 
-            this.nameChoose.HeaderText = "Name";
-            this.nameChoose.Name = "nameChoose";
-            this.nameChoose.ReadOnly = true;
-            // 
-            // addressChoose
-            // 
-            this.addressChoose.HeaderText = "Address";
-            this.addressChoose.Name = "addressChoose";
-            this.addressChoose.ReadOnly = true;
-            // 
-            // state_Delivering
-            // 
-            this.state_Delivering.HeaderText = "State";
-            this.state_Delivering.Name = "state_Delivering";
-            this.state_Delivering.ReadOnly = true;
             // 
             // DeliveryRoom
             // 
@@ -248,6 +256,8 @@ public class DeliveryRoom : Form
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Name = "DeliveryRoom";
+            this.ShowIcon = false;
+            this.Text = "Delivery Room";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

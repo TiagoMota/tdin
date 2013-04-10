@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title>Welcome to SushiHouse</title>
 </head>
 <body>
@@ -41,8 +41,8 @@
                     <td><asp:TextBox id="ammount" value="0" runat="server"/></td>
                 </tr>
             </table>
-            <asp:ImageButton ID="more" runat="server" />
-            <asp:ImageButton ID="ImageButton2" runat="server" />
+            <asp:ImageButton ID="more" runat="server" Height="15px" ImageUrl="C:\Users\Tiago\Documents\GitHub\tdin\WebSites\SushiOrder\plus.jpg" />
+            <asp:ImageButton ID="minus" runat="server" Height="15px" ImageUrl="C:\Users\Tiago\Documents\GitHub\tdin\WebSites\SushiOrder\minus.jpg" />
             <br />
             <asp:Button ID="placeOrderButton" runat="server" Text="Place Order" OnClick="PlaceOrder_Click" />
         </asp:Panel>

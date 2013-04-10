@@ -73,10 +73,9 @@ public class Orders : MarshalByRefObject, IOrders
         return null;
     }
 
-    public void Add(string name, string add, int cc, Dictionary<int, string> orders)
+    public void Add(string name, string add, int cc, Dictionary<int, int> orders)
     {
-        int tp = 1, qt = 1;
-        Order nO = new Order(name, add, cc, tp, qt);
+        Order nO = new Order(name, add, cc, orders);
         nO.id = AOrders.Count + 1;
         AOrders.Add(nO);
         AddingOrder();

@@ -19,17 +19,13 @@ class PrepRoom : Form {
     private Button button1;
     private DataGridView dataGridView1;
     private Button button2;
+    private Label label2;
     private DataGridViewTextBoxColumn id_orded;
     private DataGridViewTextBoxColumn Name;
-    private DataGridViewTextBoxColumn Type;
-    private DataGridViewTextBoxColumn Quantity;
     private DataGridViewTextBoxColumn State;
     private DataGridViewTextBoxColumn id_prep;
     private DataGridViewTextBoxColumn Name_Prep;
-    private DataGridViewTextBoxColumn type_prep;
-    private DataGridViewTextBoxColumn qt_prep;
     private DataGridViewTextBoxColumn state_prep;
-    private Label label2;
     private DataGridView dataGridView2;
 
     PrepRoom()
@@ -89,20 +85,16 @@ class PrepRoom : Form {
   {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id_orded = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.id_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name_Prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qt_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.state_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.id_orded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_Prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state_prep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -126,49 +118,12 @@ class PrepRoom : Form {
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_orded,
             this.Name,
-            this.Type,
-            this.Quantity,
             this.State});
             this.dataGridView1.Location = new System.Drawing.Point(21, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(378, 483);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // id_orded
-            // 
-            this.id_orded.HeaderText = "ID";
-            this.id_orded.Name = "id_orded";
-            this.id_orded.ReadOnly = true;
-            this.id_orded.Width = 43;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Width = 60;
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Shushi Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Width = 91;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 71;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "State";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            this.State.Width = 57;
             // 
             // button1
             // 
@@ -190,49 +145,12 @@ class PrepRoom : Form {
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_prep,
             this.Name_Prep,
-            this.type_prep,
-            this.qt_prep,
             this.state_prep});
             this.dataGridView2.Location = new System.Drawing.Point(415, 50);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(373, 483);
             this.dataGridView2.TabIndex = 4;
-            // 
-            // id_prep
-            // 
-            this.id_prep.HeaderText = "ID";
-            this.id_prep.Name = "id_prep";
-            this.id_prep.ReadOnly = true;
-            this.id_prep.Width = 43;
-            // 
-            // Name_Prep
-            // 
-            this.Name_Prep.HeaderText = "Name";
-            this.Name_Prep.Name = "Name_Prep";
-            this.Name_Prep.ReadOnly = true;
-            this.Name_Prep.Width = 60;
-            // 
-            // type_prep
-            // 
-            this.type_prep.HeaderText = "Sushu Type";
-            this.type_prep.Name = "type_prep";
-            this.type_prep.ReadOnly = true;
-            this.type_prep.Width = 89;
-            // 
-            // qt_prep
-            // 
-            this.qt_prep.HeaderText = "Quantity";
-            this.qt_prep.Name = "qt_prep";
-            this.qt_prep.ReadOnly = true;
-            this.qt_prep.Width = 71;
-            // 
-            // state_prep
-            // 
-            this.state_prep.HeaderText = "State";
-            this.state_prep.Name = "state_prep";
-            this.state_prep.ReadOnly = true;
-            this.state_prep.Width = 57;
             // 
             // button2
             // 
@@ -253,6 +171,48 @@ class PrepRoom : Form {
             this.label2.TabIndex = 6;
             this.label2.Text = "Orders being prepared";
             // 
+            // id_orded
+            // 
+            this.id_orded.HeaderText = "ID";
+            this.id_orded.Name = "id_orded";
+            this.id_orded.ReadOnly = true;
+            this.id_orded.Width = 43;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            this.Name.Width = 60;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            this.State.Width = 57;
+            // 
+            // id_prep
+            // 
+            this.id_prep.HeaderText = "ID";
+            this.id_prep.Name = "id_prep";
+            this.id_prep.ReadOnly = true;
+            this.id_prep.Width = 43;
+            // 
+            // Name_Prep
+            // 
+            this.Name_Prep.HeaderText = "Name";
+            this.Name_Prep.Name = "Name_Prep";
+            this.Name_Prep.ReadOnly = true;
+            this.Name_Prep.Width = 60;
+            // 
+            // state_prep
+            // 
+            this.state_prep.HeaderText = "State";
+            this.state_prep.Name = "state_prep";
+            this.state_prep.ReadOnly = true;
+            this.state_prep.Width = 57;
+            // 
             // PrepRoom
             // 
             this.ClientSize = new System.Drawing.Size(805, 609);
@@ -262,6 +222,7 @@ class PrepRoom : Form {
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+           // this.Name = "PrepRoom";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -277,7 +238,7 @@ class PrepRoom : Form {
         foreach (Order o in ls)
         {
 
-            string[] tmp = {o.id.ToString(), o.client.name, o.type.ToString(), o.quantity.ToString(), o.state};
+            string[] tmp = {o.id.ToString(), o.client.name, o.state};
             dg.Rows.Add(tmp);
         }
     
@@ -295,6 +256,8 @@ class PrepRoom : Form {
       string tmp = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString();
       ordersList.setOrderReady(tmp);
   }
+
+
 
 }
 

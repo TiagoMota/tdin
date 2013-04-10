@@ -28,8 +28,7 @@ public class Client
 [Serializable]
 public class Order {
   public int id { get; set; }
-  public int type { get; set; }
-  public int quantity { get; set; }
+  public Dictionary<int, int> order {get; set;}
   public Client client { get; set; }
   /*
    * orded -> preparing -> ready -> delivering -> done
@@ -37,10 +36,10 @@ public class Order {
   public string state { get; set; }
   public string deliveryTeamAssigned { get; set; }
 
-  public Order(string name, string add, int cc, int tp, int qt) {
+  public Order(string name, string add, int cc, Dictionary<int, int> order)
+  {
     client = new Client(name, add, cc);
-    type = tp;
-    quantity = qt;
+    this.order = order;
     state = "orded";
   }
 }
@@ -53,7 +52,7 @@ public interface IOrders {
   event DeliveringOrderEventHandler DeliveringOrder;
   event FinalizingOrderEventHandler FinalizingOrder;
 
-  void Add(string name, string add, int cc, Dictionary<int, string> orders);
+  void Add(string name, string add, int cc, Dictionary<int, int> orders);
   List<Order> GetCostumerOrders(string name);
   List<Order> GetAllOrders();
   List<Order> GetOrdedOrders();
@@ -67,6 +66,7 @@ public interface IOrders {
 
   List<String> GetDeliveryTeams();
   void AddDeliveryTeam(string i);
+
 }
 
 public class EventIntermediate : MarshalByRefObject

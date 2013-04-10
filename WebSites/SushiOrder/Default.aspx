@@ -25,26 +25,17 @@
             <asp:Label ID="ccLabel" Text="Credit Card Number " runat="server"/>
             <asp:TextBox id="costumerCC" runat="server"/>
             <br />
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>Amount</td>
-                </tr>
-                <tr>
-                    <td>
-                       <select>
-                          <option value="1">Type 1</option>
-                          <option value="2">Type 2</option>
-                          <option value="3">Type 3</option>
-                        </select>
-                    </td>
-                    <td><asp:TextBox id="ammount" value="0" runat="server"/></td>
-                </tr>
-            </table>
-            <asp:ImageButton ID="more" runat="server" Height="15px" ImageUrl="C:\Users\Tiago\Documents\GitHub\tdin\WebSites\SushiOrder\plus.jpg" />
-            <asp:ImageButton ID="minus" runat="server" Height="15px" ImageUrl="C:\Users\Tiago\Documents\GitHub\tdin\WebSites\SushiOrder\minus.jpg" />
+            <asp:Label ID="numeroPedidos" Text="Numero de pedidos " runat="server"/>
+            <asp:TextBox id="pedidos" runat="server"/>
+            <br />
+            <asp:Button ID="buttonPedidos" runat="server" Text="Next" OnClick="buttonPedidos_Click" />
+            <asp:Panel ID="ordersPanel" runat="server" Visible="False">
+                   
+            </asp:Panel>
             <br />
             <asp:Button ID="placeOrderButton" runat="server" Text="Place Order" OnClick="PlaceOrder_Click" />
+        </asp:Panel>
+        <asp:Panel ID="listaFinal" runat="server">
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server">   
             <asp:Label ID="orderPriceLabel" runat="server" />

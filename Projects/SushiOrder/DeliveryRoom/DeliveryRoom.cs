@@ -48,6 +48,7 @@ public class DeliveryRoom : Form
             TeamID = (ordersList.GetDeliveryTeams().Count + 1).ToString();
             ordersList.AddDeliveryTeam(TeamID);
             InitializeComponent();
+            checkIfExistsOrdersSaved();
 
         }
         catch (Exception ex)
@@ -55,6 +56,12 @@ public class DeliveryRoom : Form
             MessageBox.Show(ex.Message);
             Close();
         }
+    }
+
+    public void checkIfExistsOrdersSaved()
+    {
+        refreshList(dataGridView1, ordersList.GetReadyOrders());
+        refreshList_Special(dataGridView2, ordersList.GetDeliveringOrders(), TeamID);
     }
 
     public void OnReadyOrder()

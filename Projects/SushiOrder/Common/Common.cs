@@ -53,7 +53,7 @@ public interface IOrders {
   event FinalizingOrderEventHandler FinalizingOrder;
 
   void Add(string name, string add, int cc, Dictionary<int, int> orders);
-  List<Order> GetCostumerOrders(string name);
+  List<Order> GetCostumerOrders(int cc);
   List<Order> GetAllOrders();
   List<Order> GetOrdedOrders();
   List<Order> GetPreparingOrders();
@@ -63,7 +63,7 @@ public interface IOrders {
   void setOrderReady(string t);
   void setOrderDelivering(string t, string team);
   void setOrderDone(string t);
-
+  Order GetOrder(int id);
   List<String> GetDeliveryTeams();
   void AddDeliveryTeam(string i);
 

@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
   protected void Page_Load(object sender, EventArgs e) {
       if (!IsPostBack)
       {                                       // first load in a session
-          GridView1.Visible = false;
+      
           Panel1.Visible = false;
           Panel2.Visible = false;
           Panel4.Visible = false;
@@ -115,15 +115,11 @@ public partial class _Default : System.Web.UI.Page
       add(Convert.ToInt32(pedidos.Text));
   }
 
-  protected void Button1_Click(object sender, EventArgs e) {
+  protected void Button1_Click(object sender, EventArgs e) 
+  {
     //TODO mudar isto
-
-    List<Order> ls;
-
-    ls = orderObj.GetAllOrders();
-    foreach (Order o in ls)
-        BulletedList1.Items.Add(o.id + " | " + o.client.name + " | " + o.client.address + " | " + o.client.ccNumber + " | "  + o.state);
-    Panel4.Visible = true;
+      botao.Visible = true;
+  
   }
 
   protected void SubmitOrder(object sender, EventArgs e)
@@ -179,5 +175,52 @@ public partial class _Default : System.Web.UI.Page
           table.Controls.Add(row);
      }
       ordersPanel.Controls.Add(table);
+  }
+  protected void Button2_Click(object sender, EventArgs e)
+  {
+      List<Order> ls;
+      ls = orderObj.GetAllOrders();
+      List<String> itemsList = new List<string>();
+
+      foreach (Order o in ls)
+      {
+          Label l = new Label();
+          l.Text= o.client.name + "- Encomenda id: " + o.id + " [" + o.state + "]";
+          Table t = new Table();
+          TableRow row = new TableRow();
+          TableCell cell1 = new TableCell();
+          TableCell cell2 = new TableCell();
+          Label l1 = new Label();
+          l1.Text = "Type";
+          Label l2 = new Label();
+          l2.Text = "Amount";
+          cell1.Controls.Add(l1);
+          cell2.Controls.Add(l2);
+          row.Controls.Add(cell1);
+          row.Controls.Add(cell2);
+          t.Controls.Add(row);
+          
+          foreach (var pair in o.order)
+          {
+              TableRow row1 = new TableRow();
+              TableCell cell11 = new TableCell();
+              TableCell cell12 = new TableCell();
+              Label Ll = new Label();
+              Label Lr = new Label();
+              Ll.Text = pair.Key.ToString();
+              Lr.Text = pair.Value.ToString();
+              cell11.Controls.Add(Ll);
+              cell12.Controls.Add(Lr);
+              row1.Controls.Add(cell11);
+              row1.Controls.Add(cell12);
+              t.Controls.Add(row1);
+          }
+          Panel4.Controls.Add(l);
+          Panel4.Controls.Add(t);
+          Label temp = new Label();
+          temp.Text = "###################################################<br>";
+          Panel4.Controls.Add(temp);
+      }
+      Panel4.Visible = true;
   }
 }

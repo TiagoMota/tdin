@@ -46,10 +46,13 @@
           <asp:Button ID="Button1" runat="server" Text="GetOrders" OnClick="Button1_Click" />
           <br />
         </asp:Panel>
+        <asp:Panel ID="botao" runat="server" Visible="False">
+            <asp:Label ID="ccl" runat="server" Text="Credit Card"></asp:Label>
+            <asp:TextBox ID="cc" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="Button2" runat="server" Text="Submit" OnClick="Button2_Click" />
+        </asp:Panel>
         <asp:Panel ID="Panel4" runat="server">
-            <asp:GridView ID="GridView1" runat="server">
-            </asp:GridView>
-            <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>
           <br /> 
         </asp:Panel> 
     </form>

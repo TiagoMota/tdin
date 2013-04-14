@@ -82,12 +82,12 @@ public class Orders : MarshalByRefObject, IOrders
         Console.WriteLine("[Add] called.");
     }
 
-    public List<Order> GetCostumerOrders(string name)
+    public List<Order> GetCostumerOrders(int cc)
     {
         List<Order> result = new List<Order>();
 
         foreach (Order or in AOrders)
-            if (or.client.name == name)
+            if (or.client.ccNumber == cc)
                 result.Add(or);
         Console.WriteLine("[GetCostumerOrders] called.");
         return result;
@@ -124,7 +124,11 @@ public class Orders : MarshalByRefObject, IOrders
         return AOrders.FindAll(x => x.state == "delivering");
     }
 
-
+    public Order GetOrder(int id)
+    {
+        Console.WriteLine("[GetOrder] called.");
+        return AOrders.Find(x => x.id == id);
+    }
 
     public List<String> GetDeliveryTeams()
     {
